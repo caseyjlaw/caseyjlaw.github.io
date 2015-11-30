@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Casey J Law" />
+        <meta name="copyright" content="Casey J Law" />
+
+        <meta name="twitter:creator" content="@caseyjlaw">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content=", sitemap, " />
+
+<meta property="og:title" content="Sitemap "/>
+<meta property="og:url" content="/sitemap.html" />
+<meta property="og:description" content="The sitemap plugin generates plain-text or XML sitemaps. You can use the SITEMAP variable in your settings file to configure the behavior of the plugin. The SITEMAP variable must be a Python dictionary and can contain three keys: format, which sets the output format of the plugin (xml or txt ..." />
+<meta property="og:site_name" content="Casey J Law" />
+<meta property="og:article:author" content="Casey J Law" />
+<meta property="og:article:published_time" content="2015-11-18T11:56:38-08:00" />
+<meta name="twitter:title" content="Sitemap ">
+<meta name="twitter:description" content="The sitemap plugin generates plain-text or XML sitemaps. You can use the SITEMAP variable in your settings file to configure the behavior of the plugin. The SITEMAP variable must be a Python dictionary and can contain three keys: format, which sets the output format of the plugin (xml or txt ...">
+
+        <title>Sitemap  · Casey J Law
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>Casey J Law</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li><a href="http://twitter.com/caseyjlaw"><i class="fa fa-twitter fa-lg"></i></a></li>
+                            <li><a href="http://github.com/caseyjlaw"><i class="fa fa-github fa-lg"></i></a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/sitemap.html"> Sitemap  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p>The sitemap plugin generates plain-text or XML sitemaps. You can use the
+<tt class="docutils literal">SITEMAP</tt> variable in your settings file to configure the behavior of the
+plugin.</p>
+<p>The <tt class="docutils literal">SITEMAP</tt> variable must be a Python dictionary and can contain three keys:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal">format</tt>, which sets the output format of the plugin (<tt class="docutils literal">xml</tt> or <tt class="docutils literal">txt</tt>)</p>
+</li>
+<li><p class="first"><tt class="docutils literal">priorities</tt>, which is a dictionary with three keys:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal">articles</tt>, the priority for the URLs of the articles and their
+translations</p>
+</li>
+<li><p class="first"><tt class="docutils literal">pages</tt>, the priority for the URLs of the static pages</p>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal">indexes</tt>, the priority for the URLs of the index pages, such as tags,</dt>
+<dd><p class="first last">author pages, categories indexes, archives, etc...</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>All the values of this dictionary must be decimal numbers between <tt class="docutils literal">0</tt> and <tt class="docutils literal">1</tt>.</p>
+</li>
+<li><p class="first"><tt class="docutils literal">changefreqs</tt>, which is a dictionary with three items:</p>
+<ul class="simple">
+<li><tt class="docutils literal">articles</tt>, the update frequency of the articles</li>
+<li><tt class="docutils literal">pages</tt>, the update frequency of the pages</li>
+<li><tt class="docutils literal">indexes</tt>, the update frequency of the index pages</li>
+</ul>
+<p>Valid frequency values are <tt class="docutils literal">always</tt>, <tt class="docutils literal">hourly</tt>, <tt class="docutils literal">daily</tt>, <tt class="docutils literal">weekly</tt>, <tt class="docutils literal">monthly</tt>,
+<tt class="docutils literal">yearly</tt> and <tt class="docutils literal">never</tt>.</p>
+</li>
+</ul>
+<p>You can exclude URLs from being included in the sitemap by adding them to the sitemapExclude array in format 'sitemapExclude = ['login.html', 'signup.html']`.</p>
+<p>If a key is missing or a value is incorrect, it will be replaced with the
+default value.</p>
+<p>The sitemap is saved in <tt class="docutils literal"><span class="pre">&lt;output_path&gt;/sitemap.&lt;format&gt;</span></tt>.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal">priorities</tt> and <tt class="docutils literal">changefreqs</tt> are information for search engines.
+They are only used in the XML sitemaps.
+For more information: &lt;<a class="reference external" href="http://www.sitemaps.org/protocol.html#xmlTagDefinitions">http://www.sitemaps.org/protocol.html#xmlTagDefinitions</a>&gt;</p>
+</div>
+<p><strong>Example</strong></p>
+<p>Here is an example configuration (it's also the default settings):</p>
+<div class="highlight"><pre><span class="n">PLUGINS</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;pelican.plugins.sitemap&#39;</span><span class="p">,]</span>
+
+<span class="n">SITEMAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;format&#39;</span><span class="p">:</span> <span class="s">&#39;xml&#39;</span><span class="p">,</span>
+    <span class="s">&#39;priorities&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;articles&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s">&#39;indexes&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s">&#39;pages&#39;</span><span class="p">:</span> <span class="mf">0.5</span>
+    <span class="p">},</span>
+    <span class="s">&#39;changefreqs&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;articles&#39;</span><span class="p">:</span> <span class="s">&#39;monthly&#39;</span><span class="p">,</span>
+        <span class="s">&#39;indexes&#39;</span><span class="p">:</span> <span class="s">&#39;daily&#39;</span><span class="p">,</span>
+        <span class="s">&#39;pages&#39;</span><span class="p">:</span> <span class="s">&#39;monthly&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-11-18T11:56:38-08:00">Nov 18, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#sitemap-ref">sitemap</a>
+<h4>Social</h4>
+    <a href="http://github.com/caseyjlaw" title="My github-square Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github-square sidebar-social-links"></i></a>
+    <a href="http://twitter.com/caseyjlaw" title="My twitter-square Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter-square sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page by Talha Mansoor">Elegant</a>.</li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
