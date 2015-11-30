@@ -401,7 +401,7 @@
 <h2 id="Define-and-Generate-Dispersion-Measure-distributions">Define and Generate Dispersion Measure distributions<a class="anchor-link" href="#Define-and-Generate-Dispersion-Measure-distributions">¶</a></h2><ul>
 <li>DMfrb is all known FRBs (starting with Hippke et al. sample)</li>
 <li>FRB detection papers included: Lorimer, Thornton, Spitler, Petroff, Keane &amp; Stappers, Ravi, Burke-Spolaor &amp; Bannister, Champion, Masui (GBT detection; not yet published)</li>
-<li>DMper is observed (17) Perytons</li>
+<li>DMper is observed Perytons</li>
 <li>dmr1 is random with max of 1000 pc/cm3</li>
 <li>dmr2 is random with mean/std equal to that of observed FRBs</li>
 </ul>
@@ -748,7 +748,7 @@ Perytons Rayleigh test value: 0.615273887653 184.764705882
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-often-does-this-Rayleigh-test-value-occur-in-a-random-samples-of-10-events-(as-for-true-FRB-sample)?">How often does this Rayleigh test value occur in a random samples of 10 events (as for true FRB sample)?<a class="anchor-link" href="#How-often-does-this-Rayleigh-test-value-occur-in-a-random-samples-of-10-events-(as-for-true-FRB-sample)?">¶</a></h2>
+<h2 id="How-often-does-this-Rayleigh-test-value-exceed-that-of-sample-of-all-known-FRBs?">How often does this Rayleigh test value exceed that of sample of all known FRBs?<a class="anchor-link" href="#How-often-does-this-Rayleigh-test-value-exceed-that-of-sample-of-all-known-FRBs?">¶</a></h2>
 </div>
 </div>
 </div>
@@ -837,26 +837,6 @@ Perytons Rayleigh test value: 0.615273887653 184.764705882
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="nb">len</span><span class="p">(</span><span class="n">lowestdms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>16</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
@@ -917,7 +897,7 @@ Perytons Rayleigh test value: 0.615273887653 184.764705882
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Takeaway">Takeaway<a class="anchor-link" href="#Takeaway">¶</a></h2><p>Earlier analysis showed that Hippke et al (2015) overstated the significance of an apparent periodicity in the dispersion measure for the then-known sample of 10 FRBs. Our reanalysis, first published on the arxiv review service Dinah, showed that there was some modest significance to the periodicity, but nothing particularly unusual given that only 10 FRBs were known.</p>
-<p>With the addition of six new FRB detections, we have reanalyzed the DMs and shown that there is no sigificant periodicity in their distribution.</p>
+<p>With the addition of new FRB detections, we have reanalyzed the DMs and shown that there is no sigificant periodicity in their distribution.</p>
 <p>For posterity, we have built this analysis as an IPython (Jupyter) notebook and tested it on <a href="http://mybinder.org">http://mybinder.org</a>. Feel free to reproduce this analysis with your own modifications or the addition of new FRB detections in the future!</p>
 </div>
 </div>
