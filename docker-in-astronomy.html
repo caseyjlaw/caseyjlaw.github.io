@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Casey J Law" />
+        <meta name="copyright" content="Casey J Law" />
+
+        <meta name="twitter:creator" content="@caseyjlaw">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="software, blog, " />
+
+<meta property="og:title" content="Docker in Astronomy "/>
+<meta property="og:url" content="/docker-in-astronomy.html" />
+<meta property="og:description" content="The Problem: We&#39;re Not Programmers Astronomy, as in many academic fields, is plagued by poorly maintained software. I&#39;ve made my own contributions to that category and I totally understand why it happens. We have science to do and papers to write. Maintaining software (let alone making it documented ..." />
+<meta property="og:site_name" content="Casey J Law" />
+<meta property="og:article:author" content="Casey J Law" />
+<meta property="og:article:published_time" content="2016-03-15T15:27:38-07:00" />
+<meta name="twitter:title" content="Docker in Astronomy ">
+<meta name="twitter:description" content="The Problem: We&#39;re Not Programmers Astronomy, as in many academic fields, is plagued by poorly maintained software. I&#39;ve made my own contributions to that category and I totally understand why it happens. We have science to do and papers to write. Maintaining software (let alone making it documented ...">
+
+        <title>Docker in Astronomy  · Casey J Law
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-3920334-4', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>Casey J Law</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/cv.html">CV</a></li>
+                            <li><a href="http://twitter.com/caseyjlaw"><i class="fa fa-twitter fa-lg"></i></a></li>
+                            <li><a href="http://github.com/caseyjlaw"><i class="fa fa-github fa-lg"></i></a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/docker-in-astronomy.html"> Docker in Astronomy  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <h2 id="the-problem-were-not-programmers">The Problem: We're Not Programmers</h2>
+<p>Astronomy, as in many academic fields, is plagued by poorly maintained software. I've made <a href="http://github.com/caseyjlaw/rtpipe">my own contributions</a> to that category and I totally understand why it happens. We have science to do and papers to write. Maintaining software (let alone making it <a href="http://memegenerator.net/instance/65662890">documented</a> and <a href="https://en.wikipedia.org/wiki/Test-driven_development">tested</a>), takes time.</p>
+<p>But the consequences of that problem become so much clearer when we need to use someone <em>else's</em> software. Excited about doing a new kind of analysis or using a new telescope? You will inevitably be using someone else's software to make the leap. As astronomers increasingly become interdisciplinary, we are increasingly obliged to use code of unknown provenance. This is particularly true of older telescopes, since the code was probably written back when Fortran was cool.</p>
+<p>I came across this problem when I got excited about reproducing the analysis of pulsar data from the <a href="http://www.parkes.atnf.csiro.au">Parkes radio observatory</a>. This venerable instrument has made a fantastic contribution to the study fast radio transients, including most recently the discovery of <a href="http://www.astronomy.swin.edu.au/pulsar/frbcat">Fast Radio Bursts</a>. The Parkes teams leading this effort have done a nice job of <a href="http://supercomputing.swin.edu.au/data-sharing-cluster/parkes-frbs-archival-data">making their data public</a> to enable others to reproduce and extend on their analysis. So why not give it a try?</p>
+<p>It turns out that a basic exploration of pulsar data analysis requires half a dozen packages, written in a variety of languages and requiring a range of dependencies. Even experts in the field have stories about installing from scratch and losing days of work chasing compilation errors. It is so bad in pulsar astronomy that someone has written a <a href="http://www.pulsarastronomy.net/wiki/Software/PSRSoft">pulsar software installer</a> that manages dependencies, build order, etc.. Ironically, the download link was broken when I first visited it last month (I contacted them and it has since been fixed).</p>
+<h2 id="the-solution-build-once-share-in-docker">The Solution: Build Once, Share in Docker</h2>
+<p>Thankfully, some smart people have built an open, free tool that I think could make a big impact on the way astronomers work. That tool is <a href="http://docker.com">Docker</a>.</p>
+<p>At its simplest, Docker is like a virtual machine; it creates portable operating systems that you can run your code in. Docker describes itself as a technology for building "containers", which are like a lightweight instance of a virtual machine with a process running inside (nice discussion <a href="http://stackoverflow.com/questions/16047306/how-is-docker-different-from-a-normal-virtual-machine">here</a>). From the academic astronomer's perspective, we can just think of a container as being a frictionless way of running pre-built code. It is so easy that you can create a whole OS in a few seconds just to run a single command.</p>
+<p>Docker is available on all operating systems and has <a href="https://docs.docker.com/engine/installation">simple, well-documented installation instructions</a>. Docker also hosts a "hub" service for sharing images; it functions much as github does for git code repositories. Docker is also based on <a href="https://github.com/opencontainers">open standards</a>, so there isn't so much worry about being locked into proprietary technology.</p>
+<p>So, while I may have struggled to install the standard set of pulsar analysis softare packages, you will never need to! I have created a Docker image called <a href="https://hub.docker.com/r/caseyjlaw/pulsar-stack">"pulsar-stack"</a> that includes the core libraries and dependencies for pulsar data analysis. Anyone with Docker can now access that image and run basic analysis steps. Currently, I'm pointing my students to <a href="http://www.cv.nrao.edu/~sransom/PRESTO_search_tutorial.pdf">this demo</a> as an introduction.</p>
+<p>Of course, Docker does require that the software in question be built once. But, then again, maybe someone else has already done that for you? <a href="https://twitter.com/pkgw">Peter Williams</a> has already built the <a href="https://hub.docker.com/r/pkgw/jupyter-py2-astrostack">"astro stack"</a>. That Docker image includes a great sample of the most common astronomy software along with Jupyter (nee IPython) ready to go as an interactive computing environment.</p>
+<h2 id="introducing-dodo">Introducing: dodo</h2>
+<p>In my own applications of Docker to astronomy, I've found it useful to abstract out the docker layer as much as possible. Astronomers don't want to learn Docker; they want to learn how to use some new astronomy software. In an effort to ease access, I've written "dodo" (as in "Docker do"; see <a href="https://github.com/caseyjlaw/sidomo">the repo</a>). Think of dodo as being like "sudo" for docker images. You can run any command-line tool available in a Docker image from your current environment by prefixing the command with "dodo".</p>
+<p>For example, to 'echo hello world' in the standard ubuntu image, type:</p>
+<div class="highlight"><pre>&gt; dodo -i ubuntu echo hello world
+Image ubuntu not found locally. Pulling ubuntu:latest from docker hub.
+ubuntu:latest:    hello world
+
+
+Shutting down ubuntu:latest container
+</pre></div>
+
+
+<p>If you run that command a second time without specifying the image, it will take the first available locally. That is handy if you are running commands in an image like 'pulsar-stack'. As another example, if you'd like to inspect some pulsar data:</p>
+<div class="highlight"><pre>&gt; dodo -i caseyjlaw/pulsar-stack -- readfile GBT_Lband_PSR.fil
+Image caseyjlaw/pulsar-stack not found locally. Pulling from docker hub.
+caseyjlaw/pulsar-stack:       Assuming the data is a SIGPROC filterbank file.
+
+
+1: From the SIGPROC filterbank file &#39;GBT_Lband_PSR.fil&#39;:
+              Telescope = GBT
+            Source Name = Mystery_PSR
+                Backend = BPP
+        Obs Date String = 2004-01-06T11:38:09
+         MJD start time = 53010.48482638889254
+               RA J2000 = 16:43:38.1000
+         RA J2000 (deg) = 250.90875        
+              Dec J2000 = -12:24:58.7000
+        Dec J2000 (deg) = -12.4163055555556
+...
+
+Shutting down caseyjlaw/pulsar-stack:latest container
+</pre></div>
+
+
+<p>This example shows how to use '--' to force the end of command-line options parsing for dodo.</p>
+<p>dodo is just a wrapper of the Python API for Docker, but it uses a syntax that makes Docker feel like a part of your operating system, just like sudo. You can set environment variables to define a standard image to use or X11 display (some setup required for that). Your local directory is mounted in the Docker container by default, so data is seamlessly passed to/from the container.</p>
+<h2 id="use-cases">Use Cases</h2>
+<p>When barriers to using new and/or creaky software are removed, then new use cases emerge. I'm excited about applying docker and dodo to common problems like:</p>
+<ul>
+<li>How to run software demos for large groups.</li>
+<li>Packaging software and environments for 100% reproducible science.</li>
+<li>How to port your analysis to the cloud.</li>
+</ul>
+<p>What use cases might come from putting your code in Docker? I'm eager to hear what software problems are limiting astronomers and thinking about how Docker can help.</p>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-03-15T15:27:38-07:00">Mar 15, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#blog-ref">blog</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#software-ref">software
+                    <span>2</span>
+</a></li>
+            </ul>
+<h4>Social</h4>
+    <a href="http://github.com/caseyjlaw" title="My github-square Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github-square sidebar-social-links"></i></a>
+    <a href="http://twitter.com/caseyjlaw" title="My twitter-square Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter-square sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page by Talha Mansoor">Elegant</a>.</li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
