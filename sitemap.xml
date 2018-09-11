@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://caseyjlaw.github.io/</loc>
-<lastmod>2018-09-07T21:21:50-00:00</lastmod>
+<lastmod>2018-09-11T06:32:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://caseyjlaw.github.io/archives.html</loc>
-<lastmod>2018-09-07T21:21:50-00:00</lastmod>
+<lastmod>2018-09-11T06:32:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://caseyjlaw.github.io/tags.html</loc>
-<lastmod>2018-09-07T21:21:50-00:00</lastmod>
+<lastmod>2018-09-11T06:32:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://caseyjlaw.github.io/categories.html</loc>
-<lastmod>2018-09-07T21:21:50-00:00</lastmod>
+<lastmod>2018-09-11T06:32:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://caseyjlaw.github.io/pages/cv.html</loc>
-<lastmod>2018-09-07T21:20:44-07:00</lastmod>
+<lastmod>2018-09-11T06:32:01-07:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -60,13 +60,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://caseyjlaw.github.io/how-to-catch-an-frb.html</loc>
-<lastmod>2017-12-10T16:00:00-08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://caseyjlaw.github.io/a-multi-telescope-campaign-on-frb-121102-implications-for-the-frb-population.html</loc>
 <lastmod>2017-11-01T00:00:00-07:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -76,27 +69,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://caseyjlaw.github.io/docker-in-astronomy.html</loc>
 <lastmod>2016-03-15T16:00:00-07:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://caseyjlaw.github.io/an-open-notebook-for-reanalysis-of-fast-radio-bursts-dms.html</loc>
-<lastmod>2015-11-30T13:00:00-08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://caseyjlaw.github.io/opening-access-to-fast-radio-interferometric-imaging.html</loc>
-<lastmod>2015-11-19T15:10:00-08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://caseyjlaw.github.io/the-disperson-measures-of-fast-radio-bursts.html</loc>
-<lastmod>2015-05-22T16:00:00-07:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
