@@ -5,42 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://caseyjlaw.github.io/</loc>
-<lastmod>2020-02-10T17:01:00-00:00</lastmod>
+<lastmod>2020-10-08T16:21:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://caseyjlaw.github.io/archives.html</loc>
-<lastmod>2020-02-10T17:01:00-00:00</lastmod>
+<lastmod>2020-10-08T16:21:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://caseyjlaw.github.io/tags.html</loc>
-<lastmod>2020-02-10T17:01:00-00:00</lastmod>
+<lastmod>2020-10-08T16:21:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://caseyjlaw.github.io/categories.html</loc>
-<lastmod>2020-02-10T17:01:00-00:00</lastmod>
+<lastmod>2020-10-08T16:21:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://caseyjlaw.github.io/pages/cv.html</loc>
-<lastmod>2019-07-02T13:50:11-07:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://caseyjlaw.github.io/a-search-for-late-time-radio-emission-and-fast-radio-bursts-from-superluminous-supernovae.html</loc>
-<lastmod>2019-10-08T00:00:00-07:00</lastmod>
+<loc>http://caseyjlaw.github.io/a-distant-fast-radio-burst-associated-to-its-host-galaxy-with-the-very-large-array.html</loc>
+<lastmod>2020-10-08T00:00:00-07:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -67,22 +60,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://caseyjlaw.github.io/rfpipe.html</loc>
-<lastmod>2018-01-01T16:00:00-08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://caseyjlaw.github.io/a-multi-telescope-campaign-on-frb-121102-implications-for-the-frb-population.html</loc>
 <lastmod>2017-11-01T00:00:00-07:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://caseyjlaw.github.io/docker-in-astronomy.html</loc>
-<lastmod>2016-03-15T16:00:00-07:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
