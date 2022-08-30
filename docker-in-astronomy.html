@@ -94,36 +94,34 @@
 <h3>Introducing: dodo</h3>
 <p>In my own applications of Docker to astronomy, I've found it useful to abstract out the docker layer as much as possible. Astronomers don't want to learn Docker; they want to learn how to use some new astronomy software. In an effort to ease access, I've written "dodo" (as in "Docker do"; see <a href="https://github.com/caseyjlaw/sidomo">the repo</a>). Think of dodo as being like "sudo" for docker images. You can run any command-line tool available in a Docker image from your current environment by prefixing the command with "dodo".</p>
 <p>For example, to 'echo hello world' in the standard ubuntu image, type:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dodo</span> <span class="o">-</span><span class="n">i</span> <span class="n">ubuntu</span> <span class="n">echo</span> <span class="n">hello</span> <span class="n">world</span>
-<span class="n">Image</span> <span class="n">ubuntu</span> <span class="k">not</span> <span class="k">found</span> <span class="n">locally</span><span class="p">.</span> <span class="n">Pulling</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span> <span class="k">from</span> <span class="n">docker</span> <span class="n">hub</span><span class="p">.</span>
-<span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span><span class="p">:</span>    <span class="n">hello</span> <span class="n">world</span>
+<div class="highlight"><pre><span></span><code>&gt; dodo -i ubuntu echo hello world
+Image ubuntu not found locally. Pulling ubuntu:latest from docker hub.
+ubuntu:latest:    hello world
 
 
-<span class="n">Shutting</span> <span class="n">down</span> <span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span> <span class="n">container</span>
-</pre></div>
-
+Shutting down ubuntu:latest container
+</code></pre></div>
 
 <p>If you run that command a second time without specifying the image, it will take the first available locally. That is handy if you are running commands in an image like 'pulsar-stack'. As another example, if you'd like to inspect some pulsar data:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dodo</span> <span class="o">-</span><span class="n">i</span> <span class="n">caseyjlaw</span><span class="o">/</span><span class="n">pulsar</span><span class="o">-</span><span class="n">stack</span> <span class="c1">-- readfile GBT_Lband_PSR.fil</span>
-<span class="n">Image</span> <span class="n">caseyjlaw</span><span class="o">/</span><span class="n">pulsar</span><span class="o">-</span><span class="n">stack</span> <span class="k">not</span> <span class="k">found</span> <span class="n">locally</span><span class="p">.</span> <span class="n">Pulling</span> <span class="k">from</span> <span class="n">docker</span> <span class="n">hub</span><span class="p">.</span>
-<span class="n">caseyjlaw</span><span class="o">/</span><span class="n">pulsar</span><span class="o">-</span><span class="n">stack</span><span class="p">:</span>       <span class="n">Assuming</span> <span class="n">the</span> <span class="k">data</span> <span class="k">is</span> <span class="n">a</span> <span class="n">SIGPROC</span> <span class="n">filterbank</span> <span class="n">file</span><span class="p">.</span>
+<div class="highlight"><pre><span></span><code>&gt; dodo -i caseyjlaw/pulsar-stack -- readfile GBT_Lband_PSR.fil
+Image caseyjlaw/pulsar-stack not found locally. Pulling from docker hub.
+caseyjlaw/pulsar-stack:       Assuming the data is a SIGPROC filterbank file.
 
 
-<span class="mi">1</span><span class="p">:</span> <span class="k">From</span> <span class="n">the</span> <span class="n">SIGPROC</span> <span class="n">filterbank</span> <span class="n">file</span> <span class="s1">&#39;GBT_Lband_PSR.fil&#39;</span><span class="p">:</span>
-              <span class="n">Telescope</span> <span class="o">=</span> <span class="n">GBT</span>
-            <span class="k">Source</span> <span class="n">Name</span> <span class="o">=</span> <span class="n">Mystery_PSR</span>
-                <span class="n">Backend</span> <span class="o">=</span> <span class="n">BPP</span>
-        <span class="n">Obs</span> <span class="nb">Date</span> <span class="n">String</span> <span class="o">=</span> <span class="mi">2004</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span><span class="n">T11</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">09</span>
-         <span class="n">MJD</span> <span class="k">start</span> <span class="k">time</span> <span class="o">=</span> <span class="mi">53010</span><span class="p">.</span><span class="mi">48482638889254</span>
-               <span class="n">RA</span> <span class="n">J2000</span> <span class="o">=</span> <span class="mi">16</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">38</span><span class="p">.</span><span class="mi">1000</span>
-         <span class="n">RA</span> <span class="n">J2000</span> <span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">250</span><span class="p">.</span><span class="mi">90875</span>        
-              <span class="nb">Dec</span> <span class="n">J2000</span> <span class="o">=</span> <span class="o">-</span><span class="mi">12</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">58</span><span class="p">.</span><span class="mi">7000</span>
-        <span class="nb">Dec</span> <span class="n">J2000</span> <span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">12</span><span class="p">.</span><span class="mi">4163055555556</span>
-<span class="p">...</span>
+1: From the SIGPROC filterbank file &#39;GBT_Lband_PSR.fil&#39;:
+              Telescope = GBT
+            Source Name = Mystery_PSR
+                Backend = BPP
+        Obs Date String = 2004-01-06T11:38:09
+         MJD start time = 53010.48482638889254
+               RA J2000 = 16:43:38.1000
+         RA J2000 (deg) = 250.90875        
+              Dec J2000 = -12:24:58.7000
+        Dec J2000 (deg) = -12.4163055555556
+...
 
-<span class="n">Shutting</span> <span class="n">down</span> <span class="n">caseyjlaw</span><span class="o">/</span><span class="n">pulsar</span><span class="o">-</span><span class="n">stack</span><span class="p">:</span><span class="n">latest</span> <span class="n">container</span>
-</pre></div>
-
+Shutting down caseyjlaw/pulsar-stack:latest container
+</code></pre></div>
 
 <p>This example shows how to use '--' to force the end of command-line options parsing for dodo.</p>
 <p>dodo is just a wrapper of the Python API for Docker, but it uses a syntax that makes Docker feel like a part of your operating system, just like sudo. You can set environment variables to define a standard image to use or X11 display (some setup required for that). Your local directory is mounted in the Docker container by default, so data is seamlessly passed to/from the container.</p>
